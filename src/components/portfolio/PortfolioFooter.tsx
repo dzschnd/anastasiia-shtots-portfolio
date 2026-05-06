@@ -1,4 +1,5 @@
 import {
+	BehanceIcon,
 	DprofileIcon,
 	LinkedinIcon,
 	ResumeIcon,
@@ -21,6 +22,11 @@ const socialLinks = [
 		label: "LinkedIn",
 		href: "https://www.linkedin.com/in/anastasiia-shtots/",
 		Icon: LinkedinIcon,
+	},
+	{
+		label: "Behance",
+		href: "https://www.behance.net/nastyas1",
+		Icon: BehanceIcon,
 	},
 	{
 		label: "Dprofile",

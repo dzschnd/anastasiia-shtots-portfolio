@@ -69,6 +69,27 @@ export function LinkedinIcon(props: IconProps) {
 	);
 }
 
+export function BehanceIcon(props: IconProps) {
+	return (
+		<svg {...baseProps(props)}>
+			<path
+				d="M6.5 11.35h2.65c.82 0 1.35-.45 1.35-1.2 0-.72-.5-1.15-1.32-1.15H6.5v2.35Zm0 4.15h2.95c.9 0 1.45-.48 1.45-1.28 0-.78-.56-1.25-1.5-1.25H6.5v2.53ZM4.75 7.35h4.62c1.78 0 2.93.98 2.93 2.48 0 .92-.45 1.62-1.18 2 .98.36 1.58 1.18 1.58 2.28 0 1.78-1.3 2.99-3.25 2.99h-4.7V7.35Z"
+				fill="currentColor"
+			/>
+			<path
+				d="M15.15 8.35h4.15"
+				stroke="currentColor"
+				strokeLinecap="round"
+				strokeWidth="1.45"
+			/>
+			<path
+				d="M15.18 12.4h4.72c-.12-1.05-.9-1.68-2.15-1.68-1.23 0-2.13.62-2.57 1.68Zm6.1 1.25h-6.2c.2 1.25 1.18 2.03 2.53 2.03.95 0 1.6-.3 2.14-.9l1.1.9c-.75 1-1.82 1.55-3.32 1.55-2.47 0-4.18-1.64-4.18-4.02 0-2.36 1.74-4.05 4.18-4.05 2.3 0 3.8 1.54 3.8 3.9 0 .2-.02.42-.05.59Z"
+				fill="currentColor"
+			/>
+		</svg>
+	);
+}
+
 export function DprofileIcon(props: IconProps) {
 	return (
 		<svg fill="none" viewBox="0 0 685 685" {...props}>

@@ -9,8 +9,8 @@ const caseStudies = [
 	{
 		title: "DubSmart",
 		description:
-			"Самокат. Редизайн процесса сборки заказов для сотрудников даркстора: меньше ошибок, быстрее сценарии, спокойнее рабочий ритм.",
-		tags: ["#b2b", "#мобильное приложение", "#логистика"],
+			"Работа над AI-платформой для медиа: новые функции, UX-сценарии, dashboard, AI Dubbing Studio и дизайн-система.",
+		tags: ["#AI", "#SaaS", "#Web app", "#UX/UI"],
 		image: caseOne.src,
 		href: "/projects/dubsmart",
 		gradient:
@@ -51,13 +51,13 @@ export default function PortfolioPage() {
 			<PortfolioHeader />
 
 			<main className="px-6 pb-14 md:px-10 md:pb-16 lg:px-16 lg:pb-20">
-				<div className="mx-auto mb-8 max-w-7xl">
+				<div className="mx-auto mb-8 max-w-[880px]">
 					<h2 className="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
 						Кейсы
 					</h2>
 				</div>
 
-				<div className="mx-auto grid max-w-7xl grid-cols-1 gap-5 md:grid-cols-2">
+				<div className="mx-auto grid max-w-[880px] grid-cols-1 gap-6">
 					{caseStudies.map((study) => (
 						<CaseCard key={`${study.title}-${study.description}`} {...study} />
 					))}

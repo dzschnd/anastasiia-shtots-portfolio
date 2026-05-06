@@ -1,5 +1,6 @@
 import profileImage from "../../assets/portfolio/afc6c6ff25807132cfdfc963daaed0cc14a23859.png";
 import {
+	BehanceIcon,
 	DprofileIcon,
 	LinkedinIcon,
 	ResumeIcon,
@@ -24,6 +25,11 @@ const socialLinks = [
 		Icon: LinkedinIcon,
 	},
 	{
+		label: "Behance",
+		href: "https://www.behance.net/nastyas1",
+		Icon: BehanceIcon,
+	},
+	{
 		label: "Dprofile",
 		href: "https://dprofile.ru/anastasiia.shtots",
 		Icon: DprofileIcon,
@@ -32,52 +38,53 @@ const socialLinks = [
 
 export default function PortfolioHeader() {
 	return (
-		<header className="relative overflow-hidden px-6 pb-14 pt-10 md:px-10 md:pb-18 md:pt-14 lg:px-16 lg:pt-16">
-			<div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:gap-12">
-				<div className="relative shrink-0">
-					<div className="relative size-36 overflow-hidden rounded-full ring-1 ring-white/10 md:size-40 lg:size-44">
-						<img
-							src={profileImage.src}
-							alt="Анастасия Штоц"
-							className="h-full w-full object-cover object-center"
-						/>
-					</div>
-				</div>
-
-				<div className="flex-1">
-					<div className="mb-2 flex flex-col gap-1.5">
-						<h1 className="text-[28px] font-semibold tracking-[-0.02em] text-white md:text-[36px]">
-							Анастасия Штоц
-						</h1>
-					</div>
-
-					<p className="max-w-2xl text-base leading-7 text-white/68 md:text-[17px]">
-						Продуктовый дизайнер с опытом в AI-платформах, web-сервисах и
-						digital-продуктах. Проектирую интерфейсы, пользовательские
-						сценарии и визуальные системы, превращая сложные идеи в понятные
-						и цельные решения.
-					</p>
-
-					<div className="mt-6 flex flex-wrap gap-2.5">
-						{socialLinks.map((link) => (
-							<SocialChip key={link.label} {...link} />
-						))}
-					</div>
-				</div>
-
-				<div className="inline-flex self-start rounded-full border border-white/10 bg-white/4 p-1 shadow-[0_0_24px_rgba(255,120,233,0.08)] backdrop-blur md:self-start">
+		<header className="relative overflow-hidden px-6 pb-12 pt-8 md:px-10 md:pb-14 md:pt-12 lg:px-16 lg:pt-14">
+			<div className="relative mx-auto max-w-[880px]">
+				<div className="absolute right-0 top-0 inline-flex rounded-full border border-white/10 bg-white/4 p-1 shadow-[0_0_24px_rgba(255,120,233,0.08)] backdrop-blur">
 					<button
 						type="button"
-						className="rounded-full bg-white px-4 py-2 text-xs font-semibold tracking-[0.18em] text-[#111111]"
+						className="rounded-full bg-white px-3.5 py-2 text-xs font-semibold tracking-[0.18em] text-[#111111]"
 					>
 						RU
 					</button>
 					<button
 						type="button"
-						className="rounded-full px-4 py-2 text-xs font-semibold tracking-[0.18em] text-white/45"
+						className="rounded-full px-3.5 py-2 text-xs font-semibold tracking-[0.18em] text-white/45"
 					>
 						EN
 					</button>
+				</div>
+
+				<div className="flex flex-col gap-7 pt-14 md:grid md:grid-cols-[112px_minmax(0,1fr)] md:items-start md:gap-8 md:pt-2 lg:grid-cols-[124px_minmax(0,1fr)]">
+					<div className="relative shrink-0">
+						<div className="relative size-28 overflow-hidden rounded-full ring-1 ring-white/10 md:size-28 lg:size-31">
+							<img
+								src={profileImage.src}
+								alt="Анастасия Штоц"
+								className="h-full w-full object-cover object-center"
+							/>
+						</div>
+					</div>
+
+					<div className="min-w-0 pr-0 md:pr-32">
+						<div className="mb-2 flex flex-col gap-1.5">
+							<h1 className="text-[28px] font-semibold tracking-[-0.02em] text-white md:text-[36px]">
+								Анастасия Штоц
+							</h1>
+						</div>
+
+						<p className="max-w-[620px] text-base leading-7 text-white/68 md:text-[17px]">
+							Product / UX/UI дизайнер с опытом 3,5 года. Помогаю
+							AI-платформам, SaaS и digital-продуктам становиться понятнее,
+							цельнее и визуально сильнее.
+						</p>
+
+						<div className="mt-6 flex max-w-[620px] flex-wrap items-center gap-2.5">
+							{socialLinks.map((link) => (
+								<SocialChip key={link.label} {...link} />
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</header>
