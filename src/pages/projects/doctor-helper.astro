@@ -1,0 +1,376 @@
+---
+import doctorHelperCover from "../../assets/portfolio/doctor-helper-cover.png";
+import doctorHelperInterface from "../../assets/portfolio/doctor-helper-interface.png";
+import doctorHelperLandingHero from "../../assets/portfolio/doctor-helper-landing-hero.png";
+import doctorHelperLandingSteps from "../../assets/portfolio/doctor-helper-landing-steps.png";
+import doctorHelperResultModal from "../../assets/portfolio/doctor-helper-result-modal.png";
+import FloatingBackButton from "../../components/FloatingBackButton.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const meta = ["#AI", "#Healthcare", "#Web app", "#Grant"];
+
+const projectMeta = [
+	{ label: "Роль", value: "UX/UI Designer" },
+	{ label: "Фокус", value: ["AI Tool", "Medical UX", "Landing", "Mascot"] },
+	{ label: "Платформа", value: "Web app" },
+	{ label: "Достижение", value: ["Грант 2024", "≈ 1 млн ₽"] },
+];
+
+const userFlowSteps = [
+	"Ввод данных",
+	"Дополнительный контекст",
+	"Расшифровка",
+	"Интерпретация",
+	"История",
+	"Скачивание результата",
+];
+---
+
+<Layout title="Doctor Helper — Анастасия Штоц">
+	<div class="min-h-screen bg-[#1a1a1a] text-white">
+		<main class="px-6 pb-16 pt-8 md:px-10 lg:px-16 lg:pb-24">
+			<div class="mx-auto max-w-[960px]">
+				<a
+					href="/"
+					data-floating-back-trigger
+					class="inline-flex items-center gap-2 text-sm text-white/48 transition hover:text-white/78"
+				>
+					<span>←</span>
+					<span>Назад к портфолио</span>
+				</a>
+
+				<section class="pt-8 md:pt-12">
+					<h1 class="max-w-4xl text-[36px] font-semibold leading-tight tracking-[-0.04em] text-white">
+						Doctor Helper — AI-сервис для расшифровки антибиотикограмм
+					</h1>
+					<p class="mt-5 max-w-4xl text-lg leading-relaxed text-white/68">
+						Doctor Helper — healthcare AI-продукт для медицинских специалистов,
+						который помогает интерпретировать антибиотикограммы и быстрее
+						ориентироваться в данных для подбора антибактериальной терапии.
+					</p>
+					<p class="mt-4 max-w-4xl text-lg leading-relaxed text-white/68">
+						Я работала над интерфейсом AI-расшифровщика, историей запросов,
+						экраном результата, лендингом и визуальным образом продукта с
+						маскотом. Проект получил грант в 2024 году на сумму около 1 млн ₽.
+					</p>
+
+					<div class="mt-6 flex flex-wrap items-center gap-3">
+						{
+							meta.map((item) => (
+								<span class="rounded-full border border-[#7cc9f2]/24 bg-[#7cc9f2]/10 px-4 py-2 text-sm font-medium text-[#b9e7ff]">
+									{item}
+								</span>
+							))
+						}
+					</div>
+
+					<div class="mt-6 grid grid-cols-1 gap-5 rounded-[28px] border border-white/8 bg-white/[0.035] p-5 sm:grid-cols-2 lg:grid-cols-4">
+						{
+							projectMeta.map((item) => (
+								<div class="min-w-0 text-left">
+									<p class="text-xs font-medium uppercase tracking-[0.18em] text-white/38">
+										{item.label}
+									</p>
+									{
+										Array.isArray(item.value) ? (
+											<div class="mt-2 flex flex-col gap-1 text-sm leading-5 text-white/78">
+												{item.value.map((line) => (
+													<span>{line}</span>
+												))}
+											</div>
+										) : (
+											<p class="mt-2 text-sm leading-5 text-white/78">{item.value}</p>
+										)
+									}
+								</div>
+							))
+						}
+					</div>
+
+					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
+						<img
+							src={doctorHelperCover.src}
+							alt="Doctor Helper hero image"
+							class="block h-auto w-full object-contain"
+						/>
+					</figure>
+				</section>
+
+				<section class="mt-16 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
+					<div class="min-w-0">
+						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+							О проекте
+						</h2>
+						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
+							<p>
+								Doctor Helper — healthcare AI-сервис для медицинских специалистов,
+								который помогает работать с результатами антибиотикограмм.
+								Пользователь может ввести данные вручную или загрузить фото,
+								добавить дополнительный контекст, получить интерпретацию и
+								сохранить результат в истории.
+							</p>
+							<p>
+								Продукт был задуман как рабочий инструмент для медицинских данных:
+								быстрый, понятный и аккуратно оформленный, чтобы специалист мог
+								быстрее перейти от исходной антибиотикограммы к структурированной
+								интерпретации.
+							</p>
+						</div>
+					</div>
+
+					<aside class="rounded-[28px] border border-[#7cc9f2]/16 bg-[radial-gradient(circle_at_top_right,rgba(124,201,242,0.13),transparent_36%),rgba(255,255,255,0.035)] p-5 md:p-6">
+						<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#ffb36b]/72">
+							Моя роль
+						</p>
+						<div class="mt-5 space-y-4 text-base leading-7 text-white/68">
+							<p>
+								Я работала над интерфейсом продукта и лендингом: проектировала
+								основной экран AI-расшифровщика, историю запросов, модальное окно
+								с результатом интерпретации, состояния интерфейса и визуальную
+								подачу продукта.
+							</p>
+							<p>
+								Также я участвовала в создании более дружелюбного образа сервиса
+								через маскота, чтобы сложная medical AI-тема воспринималась
+								понятнее, но при этом сохраняла профессиональный характер.
+							</p>
+						</div>
+					</aside>
+				</section>
+
+				<section class="mt-16 grid gap-6 lg:grid-cols-[1fr_0.86fr]">
+					<div class="min-w-0">
+						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+							Контекст и задача
+						</h2>
+						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
+							<p>
+								Doctor Helper создавался для медицинских специалистов, которым
+								нужно быстро и аккуратно работать с результатами антибиотикограмм.
+								Такие данные могут быть сложными для интерпретации: важно учитывать
+								чувствительность микроорганизмов к антибиотикам, клинический
+								контекст и необходимость быстро получить понятный вывод.
+							</p>
+							<p>
+								Интерфейс должен был не перегружать пользователя, а помогать пройти
+								сценарий спокойно и последовательно: ввести данные или загрузить
+								фото, добавить дополнительную информацию, получить интерпретацию
+								и сохранить результат в истории.
+							</p>
+							<p>
+								Главная задача — сделать сложный healthcare AI-инструмент понятным,
+								рабочим и визуально аккуратным, чтобы медицинский специалист мог
+								быстрее перейти от исходных данных к структурированному результату.
+							</p>
+						</div>
+					</div>
+
+					<aside class="rounded-[28px] border border-[#ffb36b]/18 bg-[radial-gradient(circle_at_top_right,rgba(255,179,107,0.13),transparent_34%),radial-gradient(circle_at_bottom_left,rgba(124,201,242,0.1),transparent_38%),rgba(255,255,255,0.035)] p-5 md:p-6">
+						<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#7cc9f2]/76">
+							Ключевая задача
+						</p>
+						<p class="mt-5 text-xl font-semibold leading-snug tracking-[-0.03em] text-white">
+							Создать понятный AI-интерфейс для расшифровки антибиотикограмм,
+							который помогает медицинскому специалисту быстро получить
+							структурированную интерпретацию результата.
+						</p>
+						<ul class="mt-6 space-y-3 text-sm leading-6 text-white/64">
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>простой ввод данных</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>загрузка фото антибиотикограммы</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>дополнительный медицинский контекст</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>понятная интерпретация результата</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>история прошлых расшифровок</span>
+							</li>
+							<li class="flex gap-3">
+								<span class="mt-2 size-1.5 shrink-0 rounded-full bg-[#ff8a3d]"></span>
+								<span>возможность скачать результат</span>
+							</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section class="mt-16">
+					<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+						Пользовательский сценарий
+					</h2>
+					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
+						<p>
+							Основной сценарий Doctor Helper строится вокруг быстрой работы
+							с антибиотикограммой. Медицинский специалист может ввести данные
+							вручную или загрузить фото, добавить дополнительный контекст,
+							запустить расшифровку и получить структурированную интерпретацию
+							результата.
+						</p>
+						<p>
+							После анализа результат сохраняется в истории, чтобы пользователь
+							мог вернуться к прошлым расшифровкам, скачать их или удалить при
+							необходимости.
+						</p>
+					</div>
+
+					<div class="mt-8 rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(124,201,242,0.11),transparent_34%),rgba(255,255,255,0.035)] p-4 md:p-5">
+						<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+							{
+								userFlowSteps.map((step, index) => (
+									<div class="relative rounded-[20px] border border-white/8 bg-[#111111]/72 p-4">
+										<p class="text-xs font-semibold tracking-[0.16em] text-[#ffb36b]/78">
+											{String(index + 1).padStart(2, "0")}
+										</p>
+										<h3 class="mt-3 text-lg font-semibold tracking-[-0.03em] text-white">
+											{step}
+										</h3>
+										{index < userFlowSteps.length - 1 && (
+											<span class="pointer-events-none absolute right-4 top-4 hidden text-sm text-[#7cc9f2]/48 lg:block">
+												→
+											</span>
+										)}
+									</div>
+								))
+							}
+						</div>
+					</div>
+
+					<p class="mt-3 max-w-4xl text-sm leading-6 text-white/46">
+						Сценарий помогает сохранить рабочий ритм: данные вводятся в одном
+						месте, результат открывается рядом с исходной информацией, а прошлые
+						расшифровки остаются доступными в истории.
+					</p>
+				</section>
+
+				<section class="mt-16">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#7cc9f2]/76">
+						Ключевое решение 01
+					</p>
+					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+						AI-расшифровщик как рабочий инструмент
+					</h2>
+					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
+						<p>
+							Главный экран Doctor Helper был построен вокруг одного основного
+							действия — расшифровать антибиотикограмму. Пользователь может
+							ввести данные вручную или загрузить фото, добавить дополнительный
+							медицинский контекст и запустить анализ.
+						</p>
+						<p>
+							Чтобы интерфейс не ощущался как разовая форма, справа была добавлена
+							история запросов. Она помогает быстро вернуться к прошлым результатам,
+							найти нужную расшифровку по диагнозу или дате, скачать результат
+							или удалить запись.
+						</p>
+					</div>
+
+					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
+						<img
+							src={doctorHelperInterface.src}
+							alt="Doctor Helper interface screenshot: ИИ-Расшифровщик антибиотикограммы"
+							class="block h-auto w-full object-contain"
+							loading="lazy"
+						/>
+					</figure>
+					<p class="mt-3 text-sm leading-6 text-white/46">
+						Основной экран объединяет ввод данных, запуск AI-расшифровки и
+						историю прошлых результатов.
+					</p>
+				</section>
+
+				<section class="mt-16">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#7cc9f2]/76">
+						Ключевое решение 02
+					</p>
+					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+						Результат интерпретации: исходные данные и вывод в одном окне
+					</h2>
+					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
+						<p>
+							Результат расшифровки открывается в отдельном модальном окне.
+							Слева сохраняются введённые данные антибиотикограммы и
+							дополнительный контекст, справа отображается структурированная
+							интерпретация.
+						</p>
+						<p>
+							Такой формат помогает медицинскому специалисту быстро сопоставить
+							исходную информацию и итоговый вывод, не переходя на отдельную
+							страницу и не теряя контекст анализа.
+						</p>
+						<p>
+							В интерфейсе также предусмотрены действия с результатом: скачать,
+							скопировать, удалить или закрыть окно.
+						</p>
+					</div>
+
+					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_right,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
+						<img
+							src={doctorHelperResultModal.src}
+							alt="Doctor Helper result modal screenshot: Интерпретация"
+							class="block h-auto w-full object-contain"
+							loading="lazy"
+						/>
+					</figure>
+					<p class="mt-3 text-sm leading-6 text-white/46">
+						Модальное окно помогает сравнить введённые данные и результат
+						интерпретации без перехода на отдельную страницу.
+					</p>
+				</section>
+
+				<section class="mt-16">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#7cc9f2]/76">
+						Ключевое решение 03
+					</p>
+					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+						Лендинг: объяснить ценность и вызвать доверие
+					</h2>
+					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
+						<p>
+							Для healthcare AI-продукта важно не только показать функцию, но и
+							быстро объяснить, кому сервис помогает и зачем он нужен. Лендинг
+							Doctor Helper был построен вокруг простой идеи: сделать работу с
+							антибиотикограммой быстрее, понятнее и увереннее для медицинского
+							специалиста.
+						</p>
+						<p>
+							На первом экране акцент сделан на задаче продукта, понятном CTA и
+							визуальной поддержке через маскота. Также на лендинге была показана
+							грантовая поддержка проекта, чтобы усилить доверие к сервису.
+						</p>
+					</div>
+
+					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
+						<div class="space-y-4 p-4 md:p-5">
+							<img
+								src={doctorHelperLandingHero.src}
+								alt="Doctor Helper landing hero screenshot"
+								class="block h-auto w-full rounded-[22px] border border-white/8 object-contain"
+								loading="lazy"
+							/>
+							<img
+								src={doctorHelperLandingSteps.src}
+								alt="Doctor Helper landing steps screenshot"
+								class="block h-auto w-full rounded-[22px] border border-white/8 object-contain"
+								loading="lazy"
+							/>
+						</div>
+					</figure>
+					<p class="mt-3 text-sm leading-6 text-white/46">
+						Лендинг объясняет ценность Doctor Helper, показывает основной
+						сценарий продукта и подчёркивает грантовую поддержку проекта.
+					</p>
+				</section>
+			</div>
+			<FloatingBackButton />
+		</main>
+	</div>
+</Layout>

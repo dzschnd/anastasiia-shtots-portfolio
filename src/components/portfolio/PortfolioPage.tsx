@@ -1,6 +1,8 @@
 import caseOne from "../../assets/portfolio/4b262b3322df4cdbb9c8e6913ced65f5cd1396cb.png";
-import caseTwo from "../../assets/portfolio/bd501ec81e1d8da37cd5381dcb4debcff48f1521.png";
-import caseThree from "../../assets/portfolio/5a863362054eae4bef26d7f08d1b4cd0155eebec.png";
+import doctorHelperCover from "../../assets/portfolio/doctor-helper-cover.png";
+import eventessCover from "../../assets/portfolio/eventess-cover.png";
+import lollygothCover from "../../assets/portfolio/lollygoth-cover.png";
+import noLimitsCover from "../../assets/portfolio/no-limits-cover.png";
 import CaseCard from "./CaseCard";
 import PortfolioFooter from "./PortfolioFooter";
 import PortfolioHeader from "./PortfolioHeader";
@@ -17,31 +19,47 @@ const caseStudies = [
 			"linear-gradient(147deg, rgba(252, 231, 243, 1) 0%, rgba(243, 232, 255, 1) 100%)",
 	},
 	{
-		title: "Voice Tools",
+		title: "Eventess",
 		description:
-			"Концепт продуктовой страницы для AI dubbing-сервиса с упором на ясную иерархию, промо-атмосферу и ощущение технологичности.",
-		tags: ["#ai", "#landing", "#marketing"],
-		image: caseTwo.src,
+			"Стартап-продукт для создания свадебных digital-приглашений: брендинг, конструктор, шаблоны, личный кабинет и mobile.",
+		tags: ["#startup", "#web app", "#branding", "#UX/UI"],
+		image: eventessCover.src,
+		href: "/projects/eventess",
 		gradient:
 			"linear-gradient(147deg, rgba(228, 247, 255, 1) 0%, rgba(226, 235, 255, 1) 100%)",
 	},
 	{
-		title: "Ops Dashboard",
+		title: "Doctor Helper",
 		description:
-			"Сложный внутренний интерфейс для операционной команды: чистая сетка, приоритет ключевых действий и аккуратная работа с плотным контентом.",
-		tags: ["#dashboard", "#ux", "#operations"],
-		image: caseThree.src,
+			"Healthcare AI-сервис для расшифровки антибиотикограмм: интерфейс AI-инструмента, история запросов, результат интерпретации, лендинг и маскот.",
+		tags: ["#AI", "#Healthcare", "#Web app", "#Grant"],
+		image: doctorHelperCover.src,
+		href: "/projects/doctor-helper",
 		gradient:
-			"linear-gradient(147deg, rgba(252, 231, 243, 1) 0%, rgba(243, 232, 255, 1) 100%)",
+			"linear-gradient(147deg, rgba(226, 242, 250, 1) 0%, rgba(212, 235, 248, 1) 100%)",
+	},
+];
+
+const visualProjects = [
+	{
+		title: "Lollygoth",
+		description:
+			"Готический бьюти-концепт в розово-чёрной эстетике: косметика, упаковка, визуальный стиль и яркая продуктовая подача.",
+		tags: ["#beauty", "#branding", "#packaging", "#visual"],
+		href: "https://www.behance.net/gallery/246068139/Lollygoth-Branding-E-Commerce",
+		accent: "#ff92ee",
+		image: lollygothCover.src,
+		tagClass: "border-[#ff92ee]/18 bg-[#ff92ee]/8 text-[#ffb7f3]",
 	},
 	{
-		title: "Mobile Experience",
+		title: "No Limits",
 		description:
-			"Мобильный продуктовый сценарий с фокусом на быстрые решения, эмоционально мягкую визуальную подачу и аккуратные CTA.",
-		tags: ["#mobile", "#product design", "#cases"],
-		image: caseOne.src,
-		gradient:
-			"linear-gradient(147deg, rgba(248, 238, 255, 1) 0%, rgba(255, 236, 244, 1) 100%)",
+			"Смелый визуальный проект на контрасте чёрного, белого и неонового лайма: сайт, графика, постеры и бренд-материалы.",
+		tags: ["#branding", "#graphics", "#web", "#poster"],
+		href: "https://www.behance.net/gallery/248873323/NO-LIMITS-AGENCY",
+		accent: "#CEFC51",
+		image: noLimitsCover.src,
+		tagClass: "border-[#CEFC51]/35 bg-[#CEFC51]/10 text-[#CEFC51]",
 	},
 ];
 
@@ -62,6 +80,69 @@ export default function PortfolioPage() {
 						<CaseCard key={`${study.title}-${study.description}`} {...study} />
 					))}
 				</div>
+
+				<section className="mx-auto mt-16 max-w-[880px]">
+					<div className="mb-8 max-w-2xl">
+						<h2 className="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+							Не только интерфейсы
+						</h2>
+						<p className="mt-3 text-base leading-7 text-white/52 md:text-lg">
+							Визуальные проекты с сильной айдентикой, выразительной эстетикой
+							и editorial-подачей.
+						</p>
+					</div>
+
+					<div className="grid gap-5 md:grid-cols-2">
+						{visualProjects.map((project) => (
+							<a
+								key={project.title}
+								href={project.href}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="group overflow-hidden rounded-[26px] border border-zinc-700 bg-[#101010] transition duration-500 hover:border-zinc-600"
+							>
+								<div className="relative aspect-[1.34/1] overflow-hidden bg-black">
+									<img
+										src={project.image}
+										alt={`${project.title} cover`}
+										className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.06]"
+										loading="lazy"
+									/>
+									<div className="absolute inset-0 border border-white/10"></div>
+									<div className="absolute right-5 top-5 rounded-full border border-white/16 bg-black/24 px-3 py-1 text-xs font-medium text-white/72 backdrop-blur">
+										Behance
+									</div>
+								</div>
+
+								<div className="p-5 md:p-6">
+									<div className="flex flex-wrap gap-2">
+										{project.tags.map((tag) => (
+											<span
+												key={tag}
+												className={`rounded-full border px-3 py-1 text-[11px] font-medium tracking-[0.03em] ${project.tagClass}`}
+											>
+												{tag}
+											</span>
+										))}
+									</div>
+
+									<h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">
+										{project.title}
+									</h3>
+									<p className="mt-3 text-sm leading-6 text-white/52">
+										{project.description}
+									</p>
+
+									<span
+										className="mt-5 inline-flex items-center rounded-full border border-white/12 bg-white/5 px-4 py-2 text-sm font-medium text-white/70 transition duration-300 hover:border-white/22 hover:bg-white/9 hover:text-white"
+									>
+										Смотреть кейс на Behance →
+									</span>
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
 			</main>
 
 			<PortfolioFooter />

@@ -10,7 +10,7 @@ import SocialChip from "./SocialChip";
 const socialLinks = [
 	{
 		label: "CV",
-		href: "https://drive.google.com/file/d/1er6KaFUhehusmBUCHQTsf-X5gsSJIixx/view?usp=sharing",
+		href: "https://drive.google.com/file/d/1Jpm0slr8dWpkdwDEUMCQ43pudED7BZF_/view?usp=sharing",
 		Icon: ResumeIcon,
 	},
 	{

@@ -4,6 +4,7 @@ import newDashboardImage from "../../assets/portfolio/dubsmart-dashboard-new.png
 import oldDashboardImage from "../../assets/portfolio/dubsmart-dashboard-old.png";
 import newDubbingImage from "../../assets/portfolio/dubsmart-new-design.png";
 import oldDubbingImage from "../../assets/portfolio/dubsmart-old-design.png";
+import FloatingBackButton from "../../components/FloatingBackButton.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const meta = ["AI", "SaaS", "Web", "UX/UI", "2024–2026"];
@@ -204,6 +205,7 @@ const resultCards = [
 			<div class="mx-auto max-w-[960px]">
 				<a
 					href="/"
+					data-floating-back-trigger
 					class="inline-flex items-center gap-2 text-sm text-white/48 transition hover:text-white/78"
 				>
 					<span>←</span>
@@ -226,7 +228,7 @@ const resultCards = [
 					<div class="mt-6 flex flex-wrap items-center gap-3">
 						{
 							meta.map((item) => (
-								<span class="rounded-full border border-[#ff92ee]/18 bg-[#ff92ee]/8 px-4 py-2 text-sm font-medium text-[#ffb7f3]">
+								<span class="rounded-full border border-[#08AAC8]/24 bg-[#062E58]/45 px-4 py-2 text-sm font-medium text-[#8FEFFF]">
 									{item}
 								</span>
 							))
@@ -252,7 +254,7 @@ const resultCards = [
 												href={item.href}
 												target="_blank"
 												rel="noopener noreferrer"
-												class="mt-2 inline-flex text-sm font-medium leading-6 text-[#ffb7f3] underline decoration-[#ff92ee]/45 underline-offset-4 transition hover:text-white hover:decoration-white/70"
+												class="mt-2 inline-flex text-sm font-medium leading-6 text-[#8FEFFF] underline decoration-[#08AAC8]/45 underline-offset-4 transition hover:text-white hover:decoration-white/70"
 											>
 												{item.value}
 											</a>
@@ -268,7 +270,7 @@ const resultCards = [
 					</div>
 				</section>
 
-				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[radial-gradient(circle_at_top,rgba(255,120,233,0.1),transparent_35%),#111111]">
+				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[radial-gradient(circle_at_top,rgba(8,170,200,0.1),transparent_35%),#111111]">
 					<img
 						src={heroImage.src}
 						alt="Dubsmart cover"
@@ -310,7 +312,7 @@ const resultCards = [
 							contributions.map((item) => (
 								<article class="grid h-full rounded-[24px] border border-white/8 bg-white/[0.045] p-5 md:min-h-[306px] md:grid-rows-[auto_auto_1fr_auto] md:p-6">
 									<div class="md:min-h-[92px]">
-										<p class="text-sm font-medium tracking-[0.18em] text-[#ff92ee]/80">
+										<p class="text-sm font-medium tracking-[0.18em] text-[#08AAC8]/80">
 											{item.number}
 										</p>
 										<h3 class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -329,7 +331,7 @@ const resultCards = [
 										</p>
 									</div>
 									<div class="mt-6 self-end">
-										<span class="inline-flex rounded-full border border-[#ff92ee]/18 bg-[#ff92ee]/8 px-3 py-1.5 text-xs font-medium text-[#ffb7f3]">
+										<span class="inline-flex rounded-full border border-[#08AAC8]/24 bg-[#062E58]/45 px-3 py-1.5 text-xs font-medium text-[#8FEFFF]">
 											{item.tag}
 										</span>
 									</div>
@@ -370,8 +372,8 @@ const resultCards = [
 							</div>
 						</div>
 
-						<aside class="rounded-[28px] border border-[#ff92ee]/16 bg-[linear-gradient(135deg,rgba(255,146,238,0.09),rgba(255,255,255,0.035))] p-6">
-							<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#ff92ee]/80">
+						<aside class="rounded-[28px] border border-[#062E58]/70 bg-[linear-gradient(135deg,rgba(6,46,88,0.34),rgba(255,255,255,0.035))] p-6">
+							<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
 								Ключевая задача
 							</p>
 							<p class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -385,7 +387,7 @@ const resultCards = [
 								{
 									taskFocus.map((item) => (
 										<li class="flex gap-3">
-											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff92ee]" />
+											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#08AAC8]" />
 											<span>{item}</span>
 										</li>
 									))
@@ -410,7 +412,7 @@ const resultCards = [
 							{
 								improvementCards.map((item) => (
 									<article class="flex h-full flex-col rounded-[24px] border border-white/8 bg-white/[0.045] p-5 md:min-h-[190px] md:p-6">
-										<p class="text-sm font-medium tracking-[0.18em] text-[#ff92ee]/80">
+										<p class="text-sm font-medium tracking-[0.18em] text-[#08AAC8]/80">
 											{item.number}
 										</p>
 										<h4 class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -427,7 +429,7 @@ const resultCards = [
 				</section>
 
 				<section class="mt-16">
-					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#ff92ee]/80">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
 						Ключевое решение 01
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
@@ -512,7 +514,7 @@ const resultCards = [
 								{
 									newDesignImprovements.map((item) => (
 										<li class="flex gap-3">
-											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff92ee]" />
+											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#08AAC8]" />
 											<span>{item}</span>
 										</li>
 									))
@@ -523,7 +525,7 @@ const resultCards = [
 				</section>
 
 				<section class="mt-16">
-					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#ff92ee]/80">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
 						Ключевое решение 02
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
@@ -608,7 +610,7 @@ const resultCards = [
 								{
 									newDashboardImprovements.map((item) => (
 										<li class="flex gap-3">
-											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff92ee]" />
+											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#08AAC8]" />
 											<span>{item}</span>
 										</li>
 									))
@@ -620,11 +622,11 @@ const resultCards = [
 					<div class="mt-8 grid items-stretch gap-4 md:grid-cols-2">
 						{
 							dashboardCallouts.map((item) => (
-								<article class="relative flex h-full min-h-[220px] overflow-hidden rounded-[24px] border border-[#ff92ee]/18 bg-[linear-gradient(135deg,rgba(255,146,238,0.11),rgba(255,255,255,0.045)_42%,rgba(255,255,255,0.025))] p-5 md:p-6">
-									<div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(255,146,238,0.72),rgba(255,255,255,0.08))]" />
-									<div class="absolute right-0 top-0 h-24 w-24 rounded-full bg-[#ff92ee]/10 blur-2xl" />
+								<article class="relative flex h-full min-h-[220px] overflow-hidden rounded-[24px] border border-[#08AAC8]/18 bg-[linear-gradient(135deg,rgba(6,46,88,0.34),rgba(255,255,255,0.045)_42%,rgba(255,255,255,0.025))] p-5 md:p-6">
+									<div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(8,170,200,0.72),rgba(255,255,255,0.08))]" />
+									<div class="absolute right-0 top-0 h-24 w-24 rounded-full bg-[#08AAC8]/10 blur-2xl" />
 									<div class="relative flex h-full flex-col">
-										<p class="text-sm font-medium tracking-[0.18em] text-[#ff92ee]">
+										<p class="text-sm font-medium tracking-[0.18em] text-[#08AAC8]">
 											{item.number}
 										</p>
 										<h3 class="mt-5 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -641,7 +643,7 @@ const resultCards = [
 				</section>
 
 				<section class="mt-16">
-					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#ff92ee]/80">
+					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
 						Ключевое решение 03
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
@@ -660,7 +662,7 @@ const resultCards = [
 						</p>
 					</div>
 
-					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(255,146,238,0.1),transparent_42%),rgba(255,255,255,0.035)]">
+					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(8,170,200,0.1),transparent_42%),rgba(255,255,255,0.035)]">
 						<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
 							Как новая функция встраивается в&nbsp;продукт
 						</figcaption>
@@ -669,13 +671,13 @@ const resultCards = [
 								{
 									featureIntegrationSteps.map((step, index) => (
 										<>
-											<div class="flex min-h-[92px] flex-1 items-center justify-center rounded-[22px] border border-[#ff92ee]/18 bg-white/[0.045] px-4 text-center">
+											<div class="flex min-h-[92px] flex-1 items-center justify-center rounded-[22px] border border-[#08AAC8]/18 bg-[#062E58]/30 px-4 text-center">
 												<p class="text-base font-semibold leading-6 tracking-[-0.02em] text-white">
 													{step}
 												</p>
 											</div>
 											{index < featureIntegrationSteps.length - 1 && (
-												<span class="shrink-0 text-xl text-[#ff92ee]/76">→</span>
+												<span class="shrink-0 text-xl text-[#08AAC8]/76">→</span>
 											)}
 										</>
 									))
@@ -692,7 +694,7 @@ const resultCards = [
 						{
 							featureIntegrationCards.map((item) => (
 								<article class="flex h-full flex-col rounded-[22px] border border-white/8 bg-white/[0.045] p-5">
-									<p class="text-sm font-medium tracking-[0.18em] text-[#ff92ee]/80">
+									<p class="text-sm font-medium tracking-[0.18em] text-[#08AAC8]/80">
 										{item.number}
 									</p>
 									<h3 class="mt-4 text-xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -707,7 +709,7 @@ const resultCards = [
 					</div>
 				</section>
 
-				<section class="mt-16 overflow-hidden rounded-[32px] border border-[#ff92ee]/16 bg-[radial-gradient(circle_at_top_left,rgba(255,146,238,0.13),transparent_38%),rgba(255,255,255,0.035)] p-6 md:p-8">
+				<section class="mt-16 overflow-hidden rounded-[32px] border border-[#062E58]/70 bg-[radial-gradient(circle_at_top_left,rgba(8,170,200,0.13),transparent_38%),rgba(255,255,255,0.035)] p-6 md:p-8">
 					<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
 						Результат
 					</h2>
@@ -736,8 +738,8 @@ const resultCards = [
 						{
 							resultCards.map((item) => (
 								<article class="relative h-full overflow-hidden rounded-[24px] border border-white/8 bg-[#111111]/70 p-5 md:min-h-[210px] md:p-6">
-									<div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(255,146,238,0.7),rgba(255,255,255,0.06))]" />
-									<p class="text-sm font-medium tracking-[0.18em] text-[#ff92ee]/86">
+									<div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,rgba(8,170,200,0.7),rgba(255,255,255,0.06))]" />
+									<p class="text-sm font-medium tracking-[0.18em] text-[#08AAC8]/86">
 										{item.number}
 									</p>
 									<h3 class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
@@ -752,6 +754,7 @@ const resultCards = [
 					</div>
 				</section>
 			</div>
+			<FloatingBackButton />
 		</main>
 
 		<div
