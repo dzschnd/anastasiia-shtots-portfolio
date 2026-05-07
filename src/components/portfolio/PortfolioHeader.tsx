@@ -74,9 +74,9 @@ export default function PortfolioHeader() {
 						</div>
 
 						<p className="max-w-[620px] text-base leading-7 text-white/68 md:text-[17px]">
-							Product / UX/UI дизайнер с опытом 3,5 года. Помогаю
-							AI-платформам, SaaS и digital-продуктам становиться понятнее,
-							цельнее и визуально сильнее.
+							Product / UX/UI дизайнер с опытом 3 года в AI, SaaS и
+							web-продуктах. Проектирую понятные интерфейсы для сложных
+							сервисов — от сценариев и дашбордов до дизайн-систем.
 						</p>
 
 						<div className="mt-6 flex max-w-[620px] flex-wrap items-center gap-2.5">
