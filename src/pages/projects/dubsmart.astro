@@ -1,11 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import heroImage from "../../assets/portfolio/4b262b3322df4cdbb9c8e6913ced65f5cd1396cb.png";
 import newDashboardImage from "../../assets/portfolio/dubsmart-dashboard-new.png";
 import oldDashboardImage from "../../assets/portfolio/dubsmart-dashboard-old.png";
 import newDubbingImage from "../../assets/portfolio/dubsmart-new-design.png";
 import oldDubbingImage from "../../assets/portfolio/dubsmart-old-design.png";
 import FloatingBackButton from "../../components/FloatingBackButton.astro";
-import PortfolioFooter from "../../components/portfolio/PortfolioFooter";
+import PortfolioFooter from "../../components/portfolio/PortfolioFooter.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const meta = ["AI", "SaaS", "Web", "UX/UI", "2024–2026"];
@@ -272,8 +273,8 @@ const resultCards = [
 				</section>
 
 				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[radial-gradient(circle_at_top,rgba(8,170,200,0.1),transparent_35%),#111111]">
-					<img
-						src={heroImage.src}
+					<Image
+						src={heroImage}
 						alt="Dubsmart cover"
 						class="h-full w-full object-cover"
 					/>
@@ -464,8 +465,8 @@ const resultCards = [
 								class="block w-full cursor-zoom-in text-left"
 								aria-label="Открыть Old Design в большом размере"
 							>
-								<img
-									src={oldDubbingImage.src}
+								<Image
+									src={oldDubbingImage}
 									alt="Old AI Dubbing Studio interface"
 									class="block h-auto w-full object-contain"
 								/>
@@ -482,8 +483,8 @@ const resultCards = [
 								class="block w-full cursor-zoom-in text-left"
 								aria-label="Открыть New Design в большом размере"
 							>
-								<img
-									src={newDubbingImage.src}
+								<Image
+									src={newDubbingImage}
 									alt="New AI Dubbing Studio interface"
 									class="block h-auto w-full object-contain"
 								/>
@@ -560,8 +561,8 @@ const resultCards = [
 								class="block w-full cursor-zoom-in text-left"
 								aria-label="Открыть Old Dashboard Design в большом размере"
 							>
-								<img
-									src={oldDashboardImage.src}
+								<Image
+									src={oldDashboardImage}
 									alt="Old dashboard interface"
 									class="block h-auto w-full object-contain"
 								/>
@@ -578,8 +579,8 @@ const resultCards = [
 								class="block w-full cursor-zoom-in text-left"
 								aria-label="Открыть New Dashboard Design в большом размере"
 							>
-								<img
-									src={newDashboardImage.src}
+								<Image
+									src={newDashboardImage}
 									alt="New dashboard interface"
 									class="block h-auto w-full object-contain"
 								/>

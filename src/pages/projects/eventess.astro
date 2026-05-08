@@ -1,11 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import heroImage from "../../assets/portfolio/eventess-cover.png";
 import accountDraftsImage from "../../assets/portfolio/eventess-account-drafts.png";
 import accountProfileImage from "../../assets/portfolio/eventess-account-profile.png";
 import constructorImage from "../../assets/portfolio/eventess-constructor.png";
 import visualDirectionImage from "../../assets/portfolio/eventess-visual-direction.png";
 import FloatingBackButton from "../../components/FloatingBackButton.astro";
-import PortfolioFooter from "../../components/portfolio/PortfolioFooter";
+import PortfolioFooter from "../../components/portfolio/PortfolioFooter.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const meta = ["#startup", "#web app", "#branding", "#UX/UI"];
@@ -193,8 +194,8 @@ const results = [
 				</section>
 
 				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[#111111]">
-					<img
-						src={heroImage.src}
+					<Image
+						src={heroImage}
 						alt="Eventess hero image"
 						class="block h-auto w-full object-contain"
 					/>
@@ -401,8 +402,8 @@ const results = [
 							class="block w-full cursor-zoom-in text-left"
 							aria-label="Открыть визуальное направление продукта в большом размере"
 						>
-							<img
-								src={visualDirectionImage.src}
+							<Image
+								src={visualDirectionImage}
 								alt="Визуальное направление продукта Eventess"
 								class="block h-auto w-full object-contain"
 							/>
@@ -472,8 +473,8 @@ const results = [
 							class="block w-full cursor-zoom-in text-left"
 							aria-label="Открыть скрин конструктора Eventess в большом размере"
 						>
-							<img
-								src={constructorImage.src}
+							<Image
+								src={constructorImage}
 								alt="Eventess constructor screenshot"
 								class="block h-auto w-full object-contain"
 							/>
@@ -527,8 +528,8 @@ const results = [
 									data-lightbox-caption="Мои черновики"
 									aria-label="Открыть скриншот Мои черновики"
 								>
-									<img
-										src={accountDraftsImage.src}
+									<Image
+										src={accountDraftsImage}
 										alt="Скриншот раздела Мои черновики в личном кабинете Eventess"
 										class="block h-auto w-full object-contain"
 										loading="lazy"
@@ -547,8 +548,8 @@ const results = [
 									data-lightbox-caption="Профиль / личный кабинет"
 									aria-label="Открыть скриншот профиля в личном кабинете Eventess"
 								>
-									<img
-										src={accountProfileImage.src}
+									<Image
+										src={accountProfileImage}
 										alt="Скриншот профиля в личном кабинете Eventess"
 										class="block h-auto w-full object-contain"
 										loading="lazy"

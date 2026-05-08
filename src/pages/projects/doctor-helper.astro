@@ -1,11 +1,12 @@
 ---
+import { Image } from "astro:assets";
 import doctorHelperCover from "../../assets/portfolio/doctor-helper-cover.png";
 import doctorHelperInterface from "../../assets/portfolio/doctor-helper-interface.png";
 import doctorHelperLandingHero from "../../assets/portfolio/doctor-helper-landing-hero.png";
 import doctorHelperLandingSteps from "../../assets/portfolio/doctor-helper-landing-steps.png";
 import doctorHelperResultModal from "../../assets/portfolio/doctor-helper-result-modal.png";
 import FloatingBackButton from "../../components/FloatingBackButton.astro";
-import PortfolioFooter from "../../components/portfolio/PortfolioFooter";
+import PortfolioFooter from "../../components/portfolio/PortfolioFooter.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const meta = ["#AI", "#Healthcare", "#Web app", "#Grant"];
@@ -116,8 +117,8 @@ const resultCards = [
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
-						<img
-							src={doctorHelperCover.src}
+						<Image
+							src={doctorHelperCover}
 							alt="Doctor Helper hero image"
 							class="block h-auto w-full object-contain"
 						/>
@@ -302,8 +303,8 @@ const resultCards = [
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
-						<img
-							src={doctorHelperInterface.src}
+						<Image
+							src={doctorHelperInterface}
 							alt="Doctor Helper interface screenshot: ИИ-Расшифровщик антибиотикограммы"
 							class="block h-auto w-full object-contain"
 							loading="lazy"
@@ -341,8 +342,8 @@ const resultCards = [
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_right,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_left,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
-						<img
-							src={doctorHelperResultModal.src}
+						<Image
+							src={doctorHelperResultModal}
 							alt="Doctor Helper result modal screenshot: Интерпретация"
 							class="block h-auto w-full object-contain"
 							loading="lazy"
@@ -378,14 +379,14 @@ const resultCards = [
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top_left,rgba(124,201,242,0.12),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(255,179,107,0.1),transparent_34%),rgba(255,255,255,0.035)]">
 						<div class="space-y-4 p-4 md:p-5">
-							<img
-								src={doctorHelperLandingHero.src}
+							<Image
+								src={doctorHelperLandingHero}
 								alt="Doctor Helper landing hero screenshot"
 								class="block h-auto w-full rounded-[22px] border border-white/8 object-contain"
 								loading="lazy"
 							/>
-							<img
-								src={doctorHelperLandingSteps.src}
+							<Image
+								src={doctorHelperLandingSteps}
 								alt="Doctor Helper landing steps screenshot"
 								class="block h-auto w-full rounded-[22px] border border-white/8 object-contain"
 								loading="lazy"
