@@ -1,11 +1,17 @@
 ---
+import { getLocaleFromUrl, withLocale } from "../i18n";
+import { coreMessages } from "../i18n/messages";
+
 const { href = "/" } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const label = coreMessages[locale].backToPortfolio;
+const localizedHref = href.startsWith("/") ? withLocale(href, locale) : href;
 ---
 
 <a
-	href={href}
+	href={localizedHref}
 	data-floating-back-button
-	aria-label="Назад к портфолио"
+	aria-label={label}
 	class="pointer-events-none fixed left-5 top-5 z-40 flex size-11 -translate-y-1.5 items-center justify-center rounded-full border border-white/16 bg-black/48 text-xl leading-none text-white/72 opacity-0 shadow-[0_0_24px_rgba(0,0,0,0.18)] backdrop-blur transition-all duration-200 hover:scale-105 hover:border-white/32 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:left-6 md:top-6 md:size-12"
 >
 	<span aria-hidden="true">←</span>

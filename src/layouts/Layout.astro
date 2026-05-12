@@ -1,15 +1,19 @@
 ---
 import "../styles/globals.css";
+import { getLocaleFromUrl } from "../i18n";
+import { coreMessages } from "../i18n/messages";
 
 interface Props {
 	title?: string;
 }
 
-const { title = "Анастасия Штоц" } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const defaultTitle = coreMessages[locale].name;
+const { title = defaultTitle } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -18,6 +22,42 @@ const { title = "Анастасия Штоц" } = Astro.props;
 	</head>
 	<body class="bg-[#1a1a1a]">
 		<slot />
+		<script is:inline>
+			const key = "portfolio-locale";
+			const inEnPath =
+				window.location.pathname === "/en" ||
+				window.location.pathname.startsWith("/en/");
+			const saved = localStorage.getItem(key);
+			const active = inEnPath
+				? "en"
+				: saved === "en" || saved === "ru"
+					? saved
+					: "ru";
+
+			if (saved !== active) localStorage.setItem(key, active);
+
+			document.querySelectorAll("[data-locale-switch]").forEach((button) => {
+				if (!(button instanceof HTMLButtonElement)) return;
+
+				button.addEventListener("click", () => {
+					const isEn =
+						window.location.pathname === "/en" ||
+						window.location.pathname.startsWith("/en/");
+					const nextLocale = isEn ? "ru" : "en";
+
+					localStorage.setItem(key, nextLocale);
+
+					const basePath =
+						window.location.pathname.replace(/^\/en(?=\/|$)/, "") || "/";
+					const nextPath =
+						nextLocale === "en"
+							? ("/en" + basePath).replace(/\/+$/, "") || "/en"
+							: basePath;
+
+					window.location.href = nextPath + window.location.hash;
+				});
+			});
+		</script>
 	</body>
 </html>
 

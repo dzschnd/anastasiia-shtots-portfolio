@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { getLocaleFromUrl, withLocale } from "../../i18n";
+import { coreMessages } from "../../i18n/messages";
 
 interface Props {
 	title: string;
@@ -12,10 +14,12 @@ interface Props {
 }
 
 const { title, description, tags, image, gradient, href = "#" } = Astro.props;
+const locale = getLocaleFromUrl(Astro.url);
+const localizedHref = href.startsWith("/") ? withLocale(href, locale) : href;
 ---
 
 <a
-	href={href}
+	href={localizedHref}
 	class="group overflow-hidden rounded-[24px] border border-zinc-700 bg-[#111111] transition duration-500 hover:border-zinc-600"
 	style={`background-image: ${gradient}`}
 >
@@ -44,7 +48,7 @@ const { title, description, tags, image, gradient, href = "#" } = Astro.props;
 		</p>
 
 		<div class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/62 transition duration-300 group-hover:text-[#ff92ee]">
-			<span>Смотреть кейс</span>
+			<span>{coreMessages[locale].viewCase}</span>
 			<svg fill="none" viewBox="0 0 24 24" class="size-4">
 				<path
 					d="M5.75 12h12.5M13.25 6.75 18.5 12l-5.25 5.25"

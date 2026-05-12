@@ -7,145 +7,39 @@ import constructorImage from "../../assets/portfolio/eventess-constructor.png";
 import visualDirectionImage from "../../assets/portfolio/eventess-visual-direction.png";
 import FloatingBackButton from "../../components/FloatingBackButton.astro";
 import PortfolioFooter from "../../components/portfolio/PortfolioFooter.astro";
+import { getLocaleFromUrl, withLocale } from "../../i18n";
+import { eventessPageContent } from "../../i18n/pages/projects/eventess";
 import Layout from "../../layouts/Layout.astro";
-
-const meta = ["#startup", "#web app", "#branding", "#UX/UI"];
-
-const projectMeta = [
-	{ label: "Роль", value: "UX/UI Designer" },
-	{ label: "Период", value: "Июнь 2023 — январь 2024" },
-	{ label: "Фокус", value: ["Branding", "Constructor", "Templates", "Mobile"] },
-	{ label: "Платформа", value: "Web app" },
-	{ label: "Сайт проекта", value: "eventess.org ↗", href: "https://eventess.org/" },
-];
-
-const contributions = [
-	{
-		number: "01",
-		title: "Брендинг и визуальный стиль",
-		description:
-			"Разработала айдентику продукта: настроение, цвета, типографику и визуальный язык сервиса.",
-		tag: "Branding",
-	},
-	{
-		number: "02",
-		title: "Сценарий создания приглашения",
-		description:
-			"Проектировала путь от выбора шаблона до проверки, оплаты, публикации и сбора ответов гостей.",
-		tag: "User flow",
-	},
-	{
-		number: "03",
-		title: "Конструктор и шаблоны",
-		description:
-			"Создавала интерфейс конструктора и стили шаблонов, чтобы пользователь получал красивый результат без ручного редактирования дизайна.",
-		tag: "Constructor",
-	},
-	{
-		number: "04",
-		title: "Личный кабинет и mobile",
-		description:
-			"Проектировала управление приглашениями, черновики, ответы гостей, empty states и мобильные версии.",
-		tag: "Product UX",
-	},
-];
-
-const taskFocus = [
-	"понятный пошаговый сценарий",
-	"готовые стили шаблонов",
-	"превью перед публикацией",
-	"оплата публикации",
-	"ответы гостей после отправки приглашения",
-];
-
-const userFlowSteps = [
-	"Выбор шаблона",
-	"Заполнение данных",
-	"Проверка",
-	"Превью",
-	"Оплата",
-	"Публикация",
-	"Ответы гостей",
-];
-
-const productPriorities = [
-	{
-		number: "01",
-		title: "Красивый результат без дизайнера",
-		description:
-			"Пользователь выбирает готовый стиль шаблона, а не собирает дизайн вручную. Это снижает сложность и помогает быстрее получить аккуратное приглашение.",
-	},
-	{
-		number: "02",
-		title: "Пошаговый сценарий без перегруза",
-		description:
-			"Процесс создания приглашения был выстроен как последовательный путь: шаблон, данные, проверка, превью, оплата и публикация.",
-	},
-	{
-		number: "03",
-		title: "Эмоциональный, но понятный интерфейс",
-		description:
-			"Визуальный стиль должен был сохранять свадебное настроение, но не мешать функциональности: формы, CTA, навигация и состояния остаются простыми и читаемыми.",
-	},
-	{
-		number: "04",
-		title: "Продукт после публикации",
-		description:
-			"Eventess не заканчивается созданием приглашения: пользователь может управлять проектами, черновиками и видеть ответы гостей после публикации.",
-	},
-];
-
-const results = [
-	{
-		number: "01",
-		title: "Брендинг с нуля",
-		description:
-			"Продукт получил узнаваемый визуальный язык: логотип, палитру, типографику, настроение и стиль интерфейса.",
-	},
-	{
-		number: "02",
-		title: "Понятный сценарий создания",
-		description:
-			"Путь от выбора шаблона до публикации был выстроен как последовательный и спокойный пользовательский процесс.",
-	},
-	{
-		number: "03",
-		title: "Готовые стили шаблонов",
-		description:
-			"Пользователь мог выбрать настроение приглашения без ручной настройки дизайна и перегруженного редактора.",
-	},
-	{
-		number: "04",
-		title: "Личный кабинет и ответы гостей",
-		description:
-			"После публикации пользователь мог управлять приглашениями, возвращаться к черновикам и видеть ответы гостей.",
-	},
-];
+const locale = getLocaleFromUrl(Astro.url);
+const t = eventessPageContent[locale];
+const meta = t.meta;
+const projectMeta = t.projectMeta;
+const contributions = t.contributions.items;
+const taskFocus = t.contextAndTask.taskFocus;
+const userFlowSteps = t.userFlow.steps;
+const productPriorities = t.priorities.cards;
+const results = t.result.cards;
 ---
 
-<Layout title="Eventess — Анастасия Штоц">
+<Layout title={t.pageTitle}>
 	<div class="min-h-screen bg-[#1a1a1a] text-white">
 		<main class="px-6 pb-16 pt-8 md:px-10 lg:px-16 lg:pb-24">
 			<div class="mx-auto max-w-[960px]">
 				<a
-					href="/"
+					href={withLocale("/", locale)}
 					data-floating-back-trigger
 					class="inline-flex items-center gap-2 text-sm text-white/48 transition hover:text-white/78"
 				>
 					<span>←</span>
-					<span>Назад к портфолио</span>
+					<span>{t.backToPortfolio}</span>
 				</a>
 
 				<section class="pt-8 md:pt-12">
 					<h1 class="max-w-4xl text-[36px] font-semibold leading-tight tracking-[-0.04em] text-white">
-						Eventess — дизайн и брендинг сервиса свадебных digital-приглашений
+						{t.heroTitle}
 					</h1>
 					<p class="mt-5 max-w-5xl text-lg leading-relaxed text-white/68">
-						Eventess — стартап-продукт для создания и публикации свадебных
-						онлайн-приглашений. Я разрабатывала проект с нуля вместе с
-						командой: от брендинга, визуального языка и стилей шаблонов до
-						конструктора, личного кабинета, ответов гостей, мобильных версий
-						и UI kit.
+						{t.heroIntro}
 					</p>
 
 					<div class="mt-6 flex flex-wrap items-center gap-3">
@@ -196,7 +90,7 @@ const results = [
 				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[#111111]">
 					<Image
 						src={heroImage}
-						alt="Eventess hero image"
+						alt={t.heroImageAlt}
 						class="block h-auto w-full object-contain"
 					/>
 				</section>
@@ -204,38 +98,21 @@ const results = [
 				<section class="mt-16 grid gap-6 lg:grid-cols-[1fr_0.95fr] lg:items-start">
 					<div class="min-w-0">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							О проекте
+							{t.about.title}
 						</h2>
 						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
-							<p>
-								Eventess — сервис для создания свадебных digital-приглашений.
-								Пользователь выбирает готовый визуальный стиль, заполняет
-								данные мероприятия, проверяет приглашение, смотрит превью,
-								оплачивает публикацию и получает готовую страницу приглашения.
-							</p>
-							<p>
-								Продукт также помогает собрать ответы гостей после публикации:
-								пользователь может видеть, кто оставил ответ, и управлять своими
-								приглашениями в личном кабинете.
-							</p>
+							<p>{t.about.paragraphs[0]}</p>
+							<p>{t.about.paragraphs[1]}</p>
 						</div>
 					</div>
 
 					<aside class="rounded-[28px] border border-white/8 bg-white/[0.045] p-6">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Моя роль
+							{t.role.title}
 						</h2>
 						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
-							<p>
-								Я работала над Eventess как UX/UI Designer и участвовала в
-								создании стартап-продукта с нуля вместе с командой.
-							</p>
-							<p>
-								В мою зону ответственности входили брендинг, визуальная система,
-								стили шаблонов, пользовательские сценарии, интерфейс
-								конструктора, личный кабинет, ответы гостей, мобильная адаптация
-								и UI kit.
-							</p>
+							<p>{t.role.paragraphs[0]}</p>
+							<p>{t.role.paragraphs[1]}</p>
 						</div>
 					</aside>
 				</section>
@@ -243,11 +120,10 @@ const results = [
 				<section class="mt-16">
 					<div class="max-w-4xl">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Мой вклад в проект
+							{t.contributions.title}
 						</h2>
 						<p class="mt-4 text-lg leading-relaxed text-white/68">
-							Я работала над Eventess с нуля: от брендинга и визуального языка
-							до конструктора, шаблонов, личного кабинета и мобильных сценариев.
+							{t.contributions.intro}
 						</p>
 					</div>
 
@@ -278,36 +154,21 @@ const results = [
 				<section class="mt-16 grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
 					<div class="min-w-0">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Контекст и задача
+							{t.contextAndTask.title}
 						</h2>
 						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
-							<p>
-								Eventess создавался как стартап-продукт с нуля, поэтому важно
-								было сразу заложить понятную структуру: от первого знакомства с
-								сервисом до создания, оплаты, публикации приглашения и сбора
-								ответов гостей.
-							</p>
-							<p>
-								Главный вызов был в балансе между эстетикой и функциональностью.
-								Свадебное приглашение должно выглядеть красиво и эмоционально,
-								но сам интерфейс не должен превращаться в сложный редактор с
-								большим количеством настроек.
-							</p>
-							<p>
-								Задача заключалась в том, чтобы создать продукт, где пользователь
-								без дизайнерского опыта может быстро выбрать готовый стиль,
-								заполнить данные и получить аккуратное digital-приглашение.
-							</p>
+							<p>{t.contextAndTask.paragraphs[0]}</p>
+							<p>{t.contextAndTask.paragraphs[1]}</p>
+							<p>{t.contextAndTask.paragraphs[2]}</p>
 						</div>
 					</div>
 
 					<aside class="rounded-[28px] border border-[#F09A9C]/16 bg-[linear-gradient(135deg,rgba(240,154,156,0.09),rgba(255,255,255,0.035))] p-6">
 						<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#F09A9C]/80">
-							Ключевая задача
+							{t.contextAndTask.keyTaskLabel}
 						</p>
 						<p class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
-							Создать простой и красивый сервис для свадебных
-							digital-приглашений без перегруженного редактора.
+							{t.contextAndTask.keyTaskTitle}
 						</p>
 						<ul class="mt-6 space-y-3 text-base leading-6 text-white/72">
 							{
@@ -325,19 +186,11 @@ const results = [
 				<section class="mt-16">
 					<div class="max-w-4xl">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Пользовательский сценарий
+							{t.userFlow.title}
 						</h2>
 						<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
-							<p>
-								Основной сценарий Eventess был построен как понятный пошаговый
-								путь. Пользователь не редактирует дизайн вручную, а выбирает
-								готовый стиль, заполняет данные, проверяет приглашение, смотрит
-								превью, оплачивает публикацию и собирает ответы гостей.
-							</p>
-							<p>
-								Такой подход помогает получить красивое digital-приглашение без
-								сложного редактора и дизайнерских навыков.
-							</p>
+							<p>{t.userFlow.paragraphs[0]}</p>
+							<p>{t.userFlow.paragraphs[1]}</p>
 						</div>
 					</div>
 
@@ -363,48 +216,36 @@ const results = [
 						</div>
 					</div>
 					<p class="mt-3 text-sm leading-6 text-white/46">
-						Сценарий ведёт пользователя от первого выбора до опубликованного
-						приглашения и обратной связи от гостей.
+						{t.userFlow.note}
 					</p>
 				</section>
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#F09A9C]/80">
-						Ключевое решение 01
+						{t.brandingSolution.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Брендинг: праздничный стиль без визуального перегруза
+						{t.brandingSolution.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							Eventess должен был выглядеть мягко, празднично и эмоционально,
-							но при этом оставаться современным digital-продуктом. Важно было
-							не уйти в слишком декоративную свадебную эстетику, которая мешает
-							интерфейсу и усложняет сценарий.
-						</p>
-						<p>
-							Я разработала визуальное направление продукта с нуля: настроение,
-							цветовую палитру, типографику, UI-стиль и стили шаблонов.
-							Брендинг должен был поддерживать ощущение праздника, но не
-							отвлекать пользователя от главной задачи — создать и опубликовать
-							приглашение.
-						</p>
+						<p>{t.brandingSolution.paragraphs[0]}</p>
+						<p>{t.brandingSolution.paragraphs[1]}</p>
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(240,154,156,0.09),transparent_42%),rgba(255,255,255,0.035)]">
 						<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-							Визуальное направление продукта
+							{t.brandingSolution.figureCaption}
 						</figcaption>
 						<button
 							type="button"
 							data-lightbox-src={visualDirectionImage.src}
-							data-lightbox-caption="Визуальное направление продукта"
+							data-lightbox-caption={t.brandingSolution.figureLightboxCaption}
 							class="block w-full cursor-zoom-in text-left"
-							aria-label="Открыть визуальное направление продукта в большом размере"
+							aria-label={t.brandingSolution.figureAria}
 						>
 							<Image
 								src={visualDirectionImage}
-								alt="Визуальное направление продукта Eventess"
+								alt={t.brandingSolution.figureAlt}
 								class="block h-auto w-full object-contain"
 							/>
 						</button>
@@ -414,13 +255,10 @@ const results = [
 				<section class="mt-16">
 					<div class="max-w-4xl">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Что было важно в продукте
+							{t.priorities.title}
 						</h2>
 						<p class="mt-4 text-lg leading-relaxed text-white/68">
-							Eventess должен был быть не просто красивым свадебным сервисом,
-							а понятным продуктом, который помогает пользователю пройти весь
-							путь без дизайнерских навыков: выбрать стиль, заполнить данные,
-							проверить приглашение, оплатить публикацию и получить ответы гостей.
+							{t.priorities.intro}
 						</p>
 					</div>
 
@@ -445,92 +283,68 @@ const results = [
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#F09A9C]/80">
-						Ключевое решение 01
+						{t.constructorSolution.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Конструктор: готовый стиль вместо сложного редактора
+						{t.constructorSolution.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							Главной частью Eventess стал конструктор приглашения. Важно было
-							сделать процесс достаточно гибким, чтобы пользователь мог создать
-							персональное приглашение, но не превращать интерфейс в сложный
-							редактор с большим количеством ручных настроек.
-						</p>
-						<p>
-							Пользователь выбирает готовый стиль шаблона, заполняет данные по
-							шагам и сразу видит результат в preview. Такой подход помогает
-							сохранить контроль над качеством дизайна и при этом сделать
-							процесс понятным для людей без дизайнерского опыта.
-						</p>
+						<p>{t.constructorSolution.paragraphs[0]}</p>
+						<p>{t.constructorSolution.paragraphs[1]}</p>
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(240,154,156,0.09),transparent_42%),rgba(255,255,255,0.035)]">
 						<button
 							type="button"
 							data-lightbox-src={constructorImage.src}
-							data-lightbox-caption="Eventess constructor screenshot"
+							data-lightbox-caption={t.constructorSolution.figureLightboxCaption}
 							class="block w-full cursor-zoom-in text-left"
-							aria-label="Открыть скрин конструктора Eventess в большом размере"
+							aria-label={t.constructorSolution.figureAria}
 						>
 							<Image
 								src={constructorImage}
-								alt="Eventess constructor screenshot"
+								alt={t.constructorSolution.figureAlt}
 								class="block h-auto w-full object-contain"
 							/>
 						</button>
 					</figure>
 					<p class="mt-3 text-sm leading-6 text-white/46">
-						Конструктор помогает заполнить приглашение по шагам и сразу увидеть,
-						как данные будут выглядеть в готовом digital-приглашении.
+						{t.constructorSolution.note}
 					</p>
 				</section>
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#F09A9C]/80">
-						Ключевое решение 02
+						{t.accountSolution.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Личный кабинет: управление приглашениями после создания
+						{t.accountSolution.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							После создания приглашения пользователю важно иметь понятное место,
-							где можно вернуться к проектам, продолжить черновик, посмотреть
-							опубликованные приглашения и проверить ответы гостей.
-						</p>
-						<p>
-							Я проектировала личный кабинет как спокойное рабочее пространство:
-							с разделами для приглашений, черновиков, ответов гостей и страницы
-							профиля. Важно было сделать структуру простой, чтобы пользователь
-							быстро понимал, где находится нужная информация и что можно сделать
-							дальше.
-						</p>
-						<p>
-							Личный кабинет поддерживает весь путь после создания приглашения:
-							от сохранения черновика до публикации и сбора обратной связи от гостей.
-						</p>
+						<p>{t.accountSolution.paragraphs[0]}</p>
+						<p>{t.accountSolution.paragraphs[1]}</p>
+						<p>{t.accountSolution.paragraphs[2]}</p>
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(240,154,156,0.09),transparent_42%),rgba(255,255,255,0.035)]">
 						<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-							Личный кабинет Eventess
+							{t.accountSolution.figureTitle}
 						</figcaption>
 						<div class="space-y-4 p-4 md:p-5">
 							<figure class="overflow-hidden rounded-[22px] border border-white/8 bg-[#111111]/72">
 								<figcaption class="border-b border-white/8 px-4 py-3 text-xs font-medium uppercase tracking-[0.16em] text-[#F7C5C6]/70">
-									Мои черновики
+									{t.accountSolution.draftsCaption}
 								</figcaption>
 								<button
 									type="button"
 									class="block w-full cursor-zoom-in overflow-hidden bg-white"
 									data-lightbox-src={accountDraftsImage.src}
-									data-lightbox-caption="Мои черновики"
-									aria-label="Открыть скриншот Мои черновики"
+									data-lightbox-caption={t.accountSolution.draftsLightboxCaption}
+									aria-label={t.accountSolution.draftsAria}
 								>
 									<Image
 										src={accountDraftsImage}
-										alt="Скриншот раздела Мои черновики в личном кабинете Eventess"
+										alt={t.accountSolution.draftsAlt}
 										class="block h-auto w-full object-contain"
 										loading="lazy"
 									/>
@@ -539,18 +353,18 @@ const results = [
 
 							<figure class="overflow-hidden rounded-[22px] border border-white/8 bg-[#111111]/72">
 								<figcaption class="border-b border-white/8 px-4 py-3 text-xs font-medium uppercase tracking-[0.16em] text-[#F7C5C6]/70">
-									Профиль / личный кабинет
+									{t.accountSolution.profileCaption}
 								</figcaption>
 								<button
 									type="button"
 									class="block w-full cursor-zoom-in overflow-hidden bg-white"
 									data-lightbox-src={accountProfileImage.src}
-									data-lightbox-caption="Профиль / личный кабинет"
-									aria-label="Открыть скриншот профиля в личном кабинете Eventess"
+									data-lightbox-caption={t.accountSolution.profileLightboxCaption}
+									aria-label={t.accountSolution.profileAria}
 								>
 									<Image
 										src={accountProfileImage}
-										alt="Скриншот профиля в личном кабинете Eventess"
+										alt={t.accountSolution.profileAlt}
 										class="block h-auto w-full object-contain"
 										loading="lazy"
 									/>
@@ -559,28 +373,17 @@ const results = [
 						</div>
 					</figure>
 					<p class="mt-3 text-sm leading-6 text-white/46">
-						Личный кабинет помогает пользователю управлять приглашениями после
-						создания: возвращаться к черновикам, отслеживать опубликованные
-						проекты и видеть ответы гостей.
+						{t.accountSolution.note}
 					</p>
 				</section>
 
 				<section class="mt-16 rounded-[32px] border border-[#F09A9C]/14 bg-[radial-gradient(circle_at_top_left,rgba(240,154,156,0.14),transparent_34%),rgba(255,255,255,0.035)] p-5 md:p-8">
 					<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Результат
+						{t.result.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							В результате Eventess получил цельную продуктовую и визуальную
-							систему: брендинг, стили шаблонов, конструктор приглашений,
-							личный кабинет, ответы гостей, мобильные версии и UI kit.
-						</p>
-						<p>
-							Проект объединил свадебную эстетику и понятный пользовательский
-							сценарий: пользователь мог выбрать готовый стиль, заполнить данные,
-							опубликовать приглашение и собрать ответы гостей без сложного
-							редактора и дизайнерских навыков.
-						</p>
+						<p>{t.result.paragraphs[0]}</p>
+						<p>{t.result.paragraphs[1]}</p>
 					</div>
 
 					<div class="mt-8 grid gap-4 md:grid-cols-2">
@@ -613,7 +416,7 @@ const results = [
 				type="button"
 				data-lightbox-close
 				class="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-xl leading-none text-white/80 transition-all duration-200 hover:scale-105 hover:border-white/40 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-				aria-label="Закрыть изображение"
+				aria-label={t.lightbox.closeAria}
 			>
 				×
 			</button>
@@ -621,7 +424,7 @@ const results = [
 				type="button"
 				data-lightbox-backdrop
 				class="absolute inset-0 cursor-default"
-				aria-label="Закрыть изображение"
+				aria-label={t.lightbox.closeAria}
 			/>
 			<figure class="relative z-10 max-h-[92vh] w-full max-w-6xl">
 				<img

@@ -7,224 +7,45 @@ import newDubbingImage from "../../assets/portfolio/dubsmart-new-design.png";
 import oldDubbingImage from "../../assets/portfolio/dubsmart-old-design.png";
 import FloatingBackButton from "../../components/FloatingBackButton.astro";
 import PortfolioFooter from "../../components/portfolio/PortfolioFooter.astro";
+import { getLocaleFromUrl, withLocale } from "../../i18n";
+import { dubsmartPageContent } from "../../i18n/pages/projects/dubsmart";
 import Layout from "../../layouts/Layout.astro";
-
-const meta = ["AI", "SaaS", "Web", "UX/UI", "2024–2026"];
-
-const projectMeta = [
-	{ label: "Роль", value: ["Product Designer", "UX/UI Designer"] },
-	{ label: "Период", value: "2024–2026" },
-	{ label: "Фокус", value: ["AI Dubbing", "Dashboard", "Design System"] },
-	{ label: "Платформа", value: "Web app" },
-	{ label: "Сайт проекта", value: "Посмотреть сайт ↗", href: "https://dubsmart.ai/" },
-];
-
-const contributions = [
-	{
-		number: "01",
-		title: "UX-сценарии AI-инструментов",
-		description:
-			"Проектировала флоу для\u00A0загрузки файлов, настройки параметров, обработки, редактирования и\u00A0экспорта результата.",
-		impact: "AI-сценарии стали понятнее и\u00A0предсказуемее для\u00A0пользователя.",
-		tag: "AI workflows",
-	},
-	{
-		number: "02",
-		title: "Редизайн ключевых разделов",
-		description:
-			"Работала над AI Dubbing, Text to Speech, Voice Cloning, Speech to Text, Text to Image, Speech Separator, дашбордами и\u00A0страницами проектов.",
-		impact: "Разные разделы платформы стали выглядеть и\u00A0работать более цельно.",
-		tag: "Product redesign",
-	},
-	{
-		number: "03",
-		title: "Дизайн-система и\u00A0UI kit",
-		description:
-			"Расширяла и\u00A0поддерживала дизайн-систему: обновляла компоненты, состояния, паттерны и\u00A0UI kit для\u00A0новых сценариев.",
-		impact: "Интерфейс стал консистентнее, а\u00A0продукт — проще для\u00A0масштабирования.",
-		tag: "Design system",
-	},
-	{
-		number: "04",
-		title: "Дашборды и\u00A0управление проектами",
-		description:
-			"Улучшала структуру карточек проектов, статусы, действия и\u00A0навигацию между разными типами задач.",
-		impact: "Дашборд стал рабочим пространством, а\u00A0не\u00A0просто списком файлов.",
-		tag: "Dashboard UX",
-	},
-];
-
-const taskFocus = [
-	"Упростить путь от\u00A0выбора инструмента до\u00A0результата",
-	"Сделать функции легче для\u00A0поиска",
-	"Привести разные разделы к\u00A0единой логике",
-	"Поддержать добавление новых возможностей",
-	"Повысить ощущение качества и\u00A0доверия к\u00A0продукту",
-];
-
-const improvementCards = [
-	{
-		number: "01",
-		title: "Сложность интерфейса",
-		description:
-			"Пользователям было не\u00A0всегда просто понять, где находится нужная функция и\u00A0как быстрее перейти к\u00A0результату.",
-	},
-	{
-		number: "02",
-		title: "Устаревшая визуальная система",
-		description:
-			"Продукту нужно было выглядеть более современно, профессионально и\u00A0убедительно для\u00A0платных пользователей и\u00A0крупных клиентов.",
-	},
-	{
-		number: "03",
-		title: "Слабая масштабируемость",
-		description:
-			"Старые решения хуже подходили для\u00A0добавления новых функций, инструментов и\u00A0состояний интерфейса.",
-	},
-	{
-		number: "04",
-		title: "Разрозненность сценариев",
-		description:
-			"Разные разделы платформы нуждались в\u00A0более единой логике, чтобы продукт ощущался цельной системой.",
-	},
-];
-
-const oldDesignIssues = [
-	"Интерфейс выглядел как набор отдельных полей и\u00A0настроек, а\u00A0не\u00A0как цельная рабочая среда.",
-	"Сценарий плохо масштабировался под\u00A0новые функции и\u00A0более сложные задачи.",
-	"Видео, текст, перевод и\u00A0настройки воспринимались как разрозненные части.",
-	"Пользователю было сложнее контролировать процесс и\u00A0понимать структуру проекта.",
-];
-
-const newDesignImprovements = [
-	"Интерфейс стал больше похож на\u00A0полноценную рабочую студию.",
-	"Появился таймлайн, который помогает видеть структуру проекта во\u00A0времени.",
-	"Видео-превью, дорожки и\u00A0текстовые блоки стали частью единого процесса.",
-	"Пользователь получил больше контроля над\u00A0редактированием и\u00A0результатом.",
-];
-
-const oldDashboardIssues = [
-	"Главный экран больше напоминал витрину функций, чем рабочее пространство.",
-	"Карточки инструментов занимали много внимания, а\u00A0проекты выглядели второстепенно.",
-	"Навигация хуже масштабировалась под\u00A0рост количества AI-инструментов.",
-	"Интерфейс выглядел менее зрелым для\u00A0продукта с\u00A0платными пользователями и\u00A0крупными клиентами.",
-];
-
-const newDashboardImprovements = [
-	"Dashboard стал рабочим пространством для\u00A0управления AI-проектами.",
-	"Навигация стала более структурированной и\u00A0готовой к\u00A0добавлению новых инструментов.",
-	"Пользователь быстрее видит актуальные проекты, их\u00A0статусы и\u00A0доступные действия.",
-	"Интерфейс стал выглядеть более профессионально, цельно и\u00A0подходяще для\u00A0регулярного использования.",
-];
-
-const dashboardCallouts = [
-	{
-		number: "01",
-		title: "Масштабируемая навигация",
-		description:
-			"Боковая навигация помогла организовать растущее количество AI-инструментов и\u00A0сделать нужные разделы быстрее доступными.",
-	},
-	{
-		number: "02",
-		title: "Фокус на\u00A0проектах",
-		description:
-			"Интерфейс сместил акцент с\u00A0демонстрации функций на\u00A0проекты, статусы и\u00A0быстрые действия, необходимые в\u00A0ежедневной работе.",
-	},
-	{
-		number: "03",
-		title: "Понятная иерархия",
-		description:
-			"Главные действия, список проектов и\u00A0навигация стали визуально яснее, благодаря чему интерфейс проще считывается и\u00A0лучше направляет пользователя.",
-	},
-	{
-		number: "04",
-		title: "Более зрелый образ продукта",
-		description:
-			"DubSmart стал выглядеть более профессионально и\u00A0убедительно для\u00A0платных пользователей, команд и\u00A0крупных клиентов.",
-	},
-];
-
-const featureIntegrationSteps = [
-	"Новая функция",
-	"UX Flow",
-	"UI Components",
-	"Project State",
-	"Dashboard Integration",
-];
-
-const featureIntegrationCards = [
-	{
-		number: "01",
-		title: "Не\u00A0отдельный экран, а\u00A0часть продукта",
-		description:
-			"Новая функция должна была работать не\u00A0изолированно, а\u00A0как часть общей платформы: с\u00A0понятной навигацией, едиными паттернами и\u00A0связью с\u00A0проектами пользователя.",
-	},
-	{
-		number: "02",
-		title: "Сценарий от\u00A0начала до\u00A0результата",
-		description:
-			"Для\u00A0каждой функции важно было продумать полный путь: как пользователь создаёт проект, какие параметры выбирает, что происходит во\u00A0время обработки и\u00A0как он\u00A0получает результат.",
-	},
-	{
-		number: "03",
-		title: "Масштабирование без\u00A0визуального хаоса",
-		description:
-			"Новые инструменты должны были использовать общие компоненты, состояния и\u00A0правила интерфейса, чтобы продукт оставался консистентным при\u00A0росте функциональности.",
-	},
-];
-
-const resultCards = [
-	{
-		number: "01",
-		title: "Более понятные AI-сценарии",
-		description:
-			"Пользовательский путь стал яснее: от\u00A0выбора инструмента и\u00A0загрузки материала до\u00A0обработки, редактирования и\u00A0результата.",
-	},
-	{
-		number: "02",
-		title: "Более зрелый интерфейс",
-		description:
-			"Платформа стала выглядеть современнее и\u00A0профессиональнее для\u00A0пользователей, команд и\u00A0крупных клиентов.",
-	},
-	{
-		number: "03",
-		title: "Масштабируемая продуктовая система",
-		description:
-			"Новые функции стало проще встраивать в\u00A0интерфейс через общие паттерны, состояния и\u00A0компоненты.",
-	},
-	{
-		number: "04",
-		title: "Единый пользовательский опыт",
-		description:
-			"Разные инструменты платформы стали ощущаться как части одного продукта, а\u00A0не\u00A0как отдельные несвязанные разделы.",
-	},
-];
+const locale = getLocaleFromUrl(Astro.url);
+const t = dubsmartPageContent[locale];
+const meta = t.meta;
+const projectMeta = t.projectMeta;
+const contributions = t.contributions.items;
+const taskFocus = t.contextAndTask.taskFocus;
+const improvementCards = t.improvements.cards;
+const oldDesignIssues = t.solutionOne.oldList;
+const newDesignImprovements = t.solutionOne.newList;
+const oldDashboardIssues = t.solutionTwo.oldList;
+const newDashboardImprovements = t.solutionTwo.newList;
+const dashboardCallouts = t.solutionTwo.callouts;
+const featureIntegrationSteps = t.solutionThree.integrationSteps;
+const featureIntegrationCards = t.solutionThree.cards;
+const resultCards = t.result.cards;
 ---
 
-<Layout title="Dubsmart — Анастасия Штоц">
+<Layout title={t.pageTitle}>
 	<div class="min-h-screen bg-[#1a1a1a] text-white">
 		<main class="px-6 pb-16 pt-8 md:px-10 lg:px-16 lg:pb-24">
 			<div class="mx-auto max-w-[960px]">
 				<a
-					href="/"
+					href={withLocale("/", locale)}
 					data-floating-back-trigger
 					class="inline-flex items-center gap-2 text-sm text-white/48 transition hover:text-white/78"
 				>
 					<span>←</span>
-					<span>Назад к&nbsp;портфолио</span>
+					<span>{t.backToPortfolio}</span>
 				</a>
 
 				<section class="pt-8 md:pt-12">
 					<h1 class="max-w-4xl text-[36px] font-semibold leading-tight tracking-[-0.04em] text-white">
-						DubSmart — дизайн и&nbsp;развитие AI-платформы для&nbsp;медиа
+						{t.heroTitle}
 					</h1>
 					<p class="mt-5 max-w-5xl text-lg leading-relaxed text-white/68">
-						DubSmart объединяет инструменты для&nbsp;дубляжа, озвучивания,
-						клонирования голосов, генерации изображений и&nbsp;субтитров в&nbsp;одной
-						платформе. Я&nbsp;работала над&nbsp;развитием продукта в&nbsp;течение двух
-						лет: проектировала новые функции, улучшала ключевые сценарии,
-						поддерживала UI kit и&nbsp;помогала делать интерфейс более понятным,
-						цельным и&nbsp;масштабируемым.
+						{t.heroIntro}
 					</p>
 
 					<div class="mt-6 flex flex-wrap items-center gap-3">
@@ -275,37 +96,30 @@ const resultCards = [
 				<section class="mt-8 overflow-hidden rounded-[36px] border border-white/6 bg-[radial-gradient(circle_at_top,rgba(8,170,200,0.1),transparent_35%),#111111]">
 					<Image
 						src={heroImage}
-						alt="Dubsmart cover"
+						alt={t.heroImageAlt}
 						class="h-full w-full object-cover"
 					/>
 				</section>
 
 				<section class="mt-12 max-w-5xl">
 					<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						О&nbsp;проекте
+						{t.about.title}
 					</h2>
 					<p class="mt-5 max-w-4xl text-lg leading-relaxed text-white/68">
-						DubSmart уже был рабочим AI-продуктом с&nbsp;платными пользователями
-						и&nbsp;одной из&nbsp;ранних реализаций AI Dubbing. По&nbsp;мере роста
-						платформы интерфейс начал хуже справляться с&nbsp;новыми задачами:
-						пользователям было сложно ориентироваться в&nbsp;функциях, сценарии
-						становились перегруженными, а&nbsp;старые решения хуже подходили для&nbsp;масштабирования.
+						{t.about.paragraphs[0]}
 					</p>
 					<p class="mt-4 max-w-4xl text-lg leading-relaxed text-white/68">
-						Команде нужно было не&nbsp;просто обновить внешний вид, а&nbsp;сделать
-						продукт более понятным, профессиональным и&nbsp;готовым к&nbsp;росту.
+						{t.about.paragraphs[1]}
 					</p>
 				</section>
 
 				<section class="mt-16">
 					<div class="min-w-0 max-w-5xl">
 						<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Мой вклад в&nbsp;проект
+							{t.contributions.title}
 						</h2>
 						<p class="mt-4 w-full whitespace-normal break-normal text-lg leading-relaxed text-white/68">
-							Я проектировала ключевые пользовательские сценарии, редизайнила
-							интерфейсы AI-инструментов и&nbsp;помогала сделать платформу более
-							понятной, цельной и&nbsp;масштабируемой.
+							{t.contributions.intro}
 						</p>
 					</div>
 
@@ -326,7 +140,7 @@ const resultCards = [
 									</p>
 									<div class="mt-3 border-t border-white/8 pt-5">
 										<p class="text-xs font-medium uppercase tracking-[0.18em] text-white/38">
-											Что это&nbsp;дало
+											{t.contributions.impactLabel}
 										</p>
 										<p class="mt-2 text-base leading-6 text-white/78">
 											{item.impact}
@@ -347,43 +161,24 @@ const resultCards = [
 					<div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
 						<div class="min-w-0">
 							<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-								Контекст и&nbsp;задача
+								{t.contextAndTask.title}
 							</h2>
 							<div class="mt-5 space-y-4 text-lg leading-relaxed text-white/68">
-								<p>
-									DubSmart уже был рабочим AI-продуктом с&nbsp;пользователями
-									и&nbsp;платными подписчиками, но&nbsp;по&nbsp;мере роста платформы
-									интерфейс начал хуже справляться с&nbsp;новыми задачами.
-									В&nbsp;продукт добавлялись новые функции, сценарии становились
-									сложнее, а&nbsp;пользователям было не&nbsp;всегда легко быстро
-									найти нужный инструмент и&nbsp;пройти путь до&nbsp;результата.
-								</p>
-								<p>
-									Команде нужно было не&nbsp;просто обновить внешний вид интерфейса,
-									а&nbsp;сделать продукт более понятным, профессиональным
-									и&nbsp;готовым к&nbsp;масштабированию. Важно было сохранить
-									существующую логику сервиса, но&nbsp;при этом улучшить структуру
-									ключевых сценариев, навигацию, визуальную консистентность
-									и&nbsp;работу с&nbsp;новыми функциями.
-								</p>
-								<p>
-									Главная задача — сделать DubSmart удобнее для&nbsp;регулярной
-									работы: от&nbsp;выбора AI-инструмента и&nbsp;загрузки материала
-									до&nbsp;обработки, редактирования и&nbsp;получения результата.
-								</p>
+								<p>{t.contextAndTask.paragraphs[0]}</p>
+								<p>{t.contextAndTask.paragraphs[1]}</p>
+								<p>{t.contextAndTask.paragraphs[2]}</p>
 							</div>
 						</div>
 
 						<aside class="rounded-[28px] border border-[#062E58]/70 bg-[linear-gradient(135deg,rgba(6,46,88,0.34),rgba(255,255,255,0.035))] p-6">
 							<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
-								Ключевая задача
+								{t.contextAndTask.keyTaskLabel}
 							</p>
 							<p class="mt-4 text-2xl font-semibold leading-tight tracking-[-0.03em] text-white">
-								Сделать сложную AI-платформу более понятной, профессиональной
-								и&nbsp;готовой к&nbsp;росту.
+								{t.contextAndTask.keyTaskTitle}
 							</p>
 							<p class="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-white/38">
-								Фокус работы:
+								{t.contextAndTask.focusLabel}
 							</p>
 							<ul class="mt-4 space-y-3 text-base leading-6 text-white/72">
 								{
@@ -400,14 +195,10 @@ const resultCards = [
 
 					<div class="mt-14">
 						<h3 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-							Что нужно было улучшить
+							{t.improvements.title}
 						</h3>
 						<p class="mt-5 max-w-4xl text-lg leading-relaxed text-white/68">
-							Существующий интерфейс уже закрывал базовые задачи продукта,
-							но&nbsp;хуже подходил для&nbsp;следующего этапа роста.
-							Пользовательские сценарии становились сложнее, количество
-							инструментов увеличивалось, а&nbsp;интерфейсу нужно было
-							поддерживать больше действий, состояний и&nbsp;типов проектов.
+							{t.improvements.intro}
 						</p>
 
 						<div class="mt-8 grid items-stretch gap-4 md:grid-cols-2">
@@ -432,60 +223,49 @@ const resultCards = [
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
-						Ключевое решение 01
+						{t.solutionOne.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						AI Dubbing Studio: от&nbsp;набора настроек к&nbsp;рабочей среде
+						{t.solutionOne.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							AI Dubbing был одним из&nbsp;самых сложных сценариев в&nbsp;продукте.
-							Старый интерфейс решал базовую задачу, но&nbsp;с&nbsp;ростом
-							функциональности стал хуже масштабироваться: текст, перевод,
-							спикеры, видео и&nbsp;настройки воспринимались как отдельные части,
-							а&nbsp;не&nbsp;как единый рабочий процесс.
-						</p>
-						<p>
-							В&nbsp;новой версии интерфейс был переосмыслен как студия
-							редактирования: с&nbsp;таймлайном, видео-превью, дорожками,
-							текстовыми блоками и&nbsp;более явной связью между переводом,
-							аудио и&nbsp;результатом.
-						</p>
+						<p>{t.solutionOne.paragraphs[0]}</p>
+						<p>{t.solutionOne.paragraphs[1]}</p>
 					</div>
 
 					<div class="mt-8 grid gap-4 lg:grid-cols-2">
 						<figure class="overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
 							<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-								Old Design
+								{t.solutionOne.imageCaptions.old}
 							</figcaption>
 							<button
 								type="button"
 								data-lightbox-src={oldDubbingImage.src}
-								data-lightbox-caption="Old Design"
+								data-lightbox-caption={t.solutionOne.imageCaptions.old}
 								class="block w-full cursor-zoom-in text-left"
-								aria-label="Открыть Old Design в большом размере"
+								aria-label={t.solutionOne.imageAria.old}
 							>
 								<Image
 									src={oldDubbingImage}
-									alt="Old AI Dubbing Studio interface"
+									alt={t.solutionOne.imageAlt.old}
 									class="block h-auto w-full object-contain"
 								/>
 							</button>
 						</figure>
 						<figure class="overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
 							<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-								New Design
+								{t.solutionOne.imageCaptions.new}
 							</figcaption>
 							<button
 								type="button"
 								data-lightbox-src={newDubbingImage.src}
-								data-lightbox-caption="New Design"
+								data-lightbox-caption={t.solutionOne.imageCaptions.new}
 								class="block w-full cursor-zoom-in text-left"
-								aria-label="Открыть New Design в большом размере"
+								aria-label={t.solutionOne.imageAria.new}
 							>
 								<Image
 									src={newDubbingImage}
-									alt="New AI Dubbing Studio interface"
+									alt={t.solutionOne.imageAlt.new}
 									class="block h-auto w-full object-contain"
 								/>
 							</button>
@@ -495,7 +275,7 @@ const resultCards = [
 					<div class="mt-6 grid gap-8 lg:grid-cols-2">
 						<div>
 							<h3 class="text-xl font-semibold leading-tight tracking-[-0.03em] text-white">
-								Что не&nbsp;работало в&nbsp;старом дизайне
+								{t.solutionOne.oldListTitle}
 							</h3>
 							<ul class="mt-4 space-y-3 text-base leading-6 text-white/68">
 								{
@@ -510,7 +290,7 @@ const resultCards = [
 						</div>
 						<div>
 							<h3 class="text-xl font-semibold leading-tight tracking-[-0.03em] text-white">
-								Что улучшилось в&nbsp;новой версии
+								{t.solutionOne.newListTitle}
 							</h3>
 							<ul class="mt-4 space-y-3 text-base leading-6 text-white/68">
 								{
@@ -528,60 +308,49 @@ const resultCards = [
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
-						Ключевое решение 02
+						{t.solutionTwo.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Dashboard: от&nbsp;витрины функций к&nbsp;рабочему пространству
+						{t.solutionTwo.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							Вместе с&nbsp;ростом DubSmart нужно было переосмыслить dashboard.
-							Старая версия больше работала как витрина основных инструментов:
-							пользователь видел доступные функции, но&nbsp;структура хуже подходила
-							для&nbsp;регулярной работы с&nbsp;проектами, статусами и&nbsp;новыми сценариями.
-						</p>
-						<p>
-							В&nbsp;новой версии dashboard стал более рабочим и&nbsp;масштабируемым:
-							навигация стала понятнее, инструменты — лучше организованными,
-							а&nbsp;проекты и&nbsp;их&nbsp;статусы — заметнее. Интерфейс стал больше
-							похож на&nbsp;пространство для&nbsp;ежедневной работы с&nbsp;AI-проектами,
-							а&nbsp;не&nbsp;просто на&nbsp;стартовый экран продукта.
-						</p>
+						<p>{t.solutionTwo.paragraphs[0]}</p>
+						<p>{t.solutionTwo.paragraphs[1]}</p>
 					</div>
 
 					<div class="mt-8 grid gap-4 lg:grid-cols-2">
 						<figure class="overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
 							<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-								Old Design
+								{t.solutionTwo.imageCaptions.old}
 							</figcaption>
 							<button
 								type="button"
 								data-lightbox-src={oldDashboardImage.src}
-								data-lightbox-caption="Old Design"
+								data-lightbox-caption={t.solutionTwo.imageCaptions.old}
 								class="block w-full cursor-zoom-in text-left"
-								aria-label="Открыть Old Dashboard Design в большом размере"
+								aria-label={t.solutionTwo.imageAria.old}
 							>
 								<Image
 									src={oldDashboardImage}
-									alt="Old dashboard interface"
+									alt={t.solutionTwo.imageAlt.old}
 									class="block h-auto w-full object-contain"
 								/>
 							</button>
 						</figure>
 						<figure class="overflow-hidden rounded-[28px] border border-white/8 bg-white/[0.035]">
 							<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-								New Design
+								{t.solutionTwo.imageCaptions.new}
 							</figcaption>
 							<button
 								type="button"
 								data-lightbox-src={newDashboardImage.src}
-								data-lightbox-caption="New Design"
+								data-lightbox-caption={t.solutionTwo.imageCaptions.new}
 								class="block w-full cursor-zoom-in text-left"
-								aria-label="Открыть New Dashboard Design в большом размере"
+								aria-label={t.solutionTwo.imageAria.new}
 							>
 								<Image
 									src={newDashboardImage}
-									alt="New dashboard interface"
+									alt={t.solutionTwo.imageAlt.new}
 									class="block h-auto w-full object-contain"
 								/>
 							</button>
@@ -591,7 +360,7 @@ const resultCards = [
 					<div class="mt-6 grid gap-8 lg:grid-cols-2">
 						<div>
 							<h3 class="text-xl font-semibold leading-tight tracking-[-0.03em] text-white">
-								Что не&nbsp;работало в&nbsp;старом dashboard
+								{t.solutionTwo.oldListTitle}
 							</h3>
 							<ul class="mt-4 space-y-3 text-base leading-6 text-white/68">
 								{
@@ -606,7 +375,7 @@ const resultCards = [
 						</div>
 						<div>
 							<h3 class="text-xl font-semibold leading-tight tracking-[-0.03em] text-white">
-								Что улучшилось в&nbsp;новой версии
+								{t.solutionTwo.newListTitle}
 							</h3>
 							<ul class="mt-4 space-y-3 text-base leading-6 text-white/68">
 								{
@@ -646,27 +415,19 @@ const resultCards = [
 
 				<section class="mt-16">
 					<p class="text-sm font-medium uppercase tracking-[0.18em] text-[#08AAC8]/80">
-						Ключевое решение 03
+						{t.solutionThree.eyebrow}
 					</p>
 					<h2 class="mt-4 max-w-4xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Расширение функциональности без&nbsp;усложнения интерфейса
+						{t.solutionThree.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/68">
-						<p>
-							В&nbsp;DubSmart регулярно появлялись новые функции и&nbsp;сценарии,
-							поэтому важно было добавлять их&nbsp;так, чтобы интерфейс
-							не&nbsp;становился сложнее для&nbsp;пользователя.
-						</p>
-						<p>
-							Я&nbsp;работала над&nbsp;тем, чтобы новые инструменты логично
-							встраивались в&nbsp;продукт: через пользовательские сценарии,
-							UI-компоненты, состояния проектов и&nbsp;отображение в&nbsp;dashboard.
-						</p>
+						<p>{t.solutionThree.paragraphs[0]}</p>
+						<p>{t.solutionThree.paragraphs[1]}</p>
 					</div>
 
 					<figure class="mt-8 overflow-hidden rounded-[28px] border border-white/8 bg-[radial-gradient(circle_at_top,rgba(8,170,200,0.1),transparent_42%),rgba(255,255,255,0.035)]">
 						<figcaption class="border-b border-white/8 px-5 py-4 text-sm font-medium uppercase tracking-[0.18em] text-white/42">
-							Как новая функция встраивается в&nbsp;продукт
+							{t.solutionThree.integrationCaption}
 						</figcaption>
 						<div class="overflow-x-auto px-5 py-8">
 							<div class="flex min-w-[760px] items-center gap-3">
@@ -688,8 +449,7 @@ const resultCards = [
 						</div>
 					</figure>
 					<p class="mt-3 text-sm leading-6 text-white/46">
-						Схема показывает, как новая функция проходила путь от&nbsp;отдельного
-						сценария до&nbsp;полноценной части платформы.
+						{t.solutionThree.integrationNote}
 					</p>
 
 					<div class="mt-8 grid gap-4 lg:grid-cols-3">
@@ -713,27 +473,12 @@ const resultCards = [
 
 				<section class="mt-16 overflow-hidden rounded-[32px] border border-[#062E58]/70 bg-[radial-gradient(circle_at_top_left,rgba(8,170,200,0.13),transparent_38%),rgba(255,255,255,0.035)] p-6 md:p-8">
 					<h2 class="text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
-						Результат
+						{t.result.title}
 					</h2>
 					<div class="mt-5 max-w-4xl space-y-4 text-lg leading-relaxed text-white/72">
-						<p>
-							Работа над&nbsp;DubSmart помогла перевести интерфейс платформы
-							на&nbsp;более зрелый уровень: продукт стал выглядеть современнее,
-							профессиональнее и&nbsp;лучше подготовленным к&nbsp;росту функциональности.
-						</p>
-						<p>
-							Ключевые сценарии стали понятнее для&nbsp;пользователя: AI Dubbing
-							был переосмыслен как полноценная рабочая студия, dashboard стал
-							удобнее для&nbsp;управления проектами, а&nbsp;новые функции начали
-							встраиваться в&nbsp;продукт через более единую систему сценариев,
-							компонентов и&nbsp;состояний.
-						</p>
-						<p>
-							Для&nbsp;меня этот проект стал важным опытом работы с&nbsp;реальным
-							AI-продуктом, где дизайн должен был решать не&nbsp;только визуальные
-							задачи, но&nbsp;и&nbsp;помогать продукту масштабироваться, сохранять
-							понятность и&nbsp;поддерживать доверие пользователей.
-						</p>
+						<p>{t.result.paragraphs[0]}</p>
+						<p>{t.result.paragraphs[1]}</p>
+						<p>{t.result.paragraphs[2]}</p>
 					</div>
 
 					<div class="mt-8 grid items-stretch gap-4 md:grid-cols-2">
@@ -769,7 +514,7 @@ const resultCards = [
 				type="button"
 				data-lightbox-close
 				class="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-xl leading-none text-white/80 transition-all duration-200 hover:scale-105 hover:border-white/40 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-				aria-label="Закрыть изображение"
+				aria-label={t.lightbox.closeAria}
 			>
 				×
 			</button>
@@ -777,7 +522,7 @@ const resultCards = [
 				type="button"
 				data-lightbox-backdrop
 				class="absolute inset-0 cursor-default"
-				aria-label="Закрыть изображение"
+				aria-label={t.lightbox.closeAria}
 			/>
 			<figure class="relative z-10 max-h-[92vh] w-full max-w-6xl">
 				<img
